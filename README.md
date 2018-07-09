@@ -1,24 +1,37 @@
-# README
+# Rails with Rspec
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Quando vamos criar um projeto em Rails, em que iremos usar outras libs/gems para test, não precisamos do mini-test que é o padrão gerado pelo Rails.
 
-Things you may want to cover:
+Para isso ignoramos os tests na hora da geração do projeto:
 
-* Ruby version
+````
+rails g rails_tdd -T
+````
 
-* System dependencies
+O T maiúsculo indica que o projeto sera criado sem os testes por padrão.
 
-* Configuration
+## Adicionando as Gems necessárias
 
-* Database creation
+Precisamos adicionar em nosso Gemfile as seguintes gems:
 
-* Database initialization
+````
+group :development, :test do
+  # Rspec to Rails
+  gem 'rspec-rails', '~> 3.6'
+  # Capybara gem
+  gem 'capybara'
+end
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+group :development do
+  # This gem is necessary to generate the binary of rspec in folder bin from application. 
+  # To get more speed with commands in rspec when we run bin/rspec rather rspec.
+  gem 'spring-commands-rspec'
+end
+````
 
-* Deployment instructions
+Vamos entender um pouco sobre essas gems...
 
-* ...
+- rspec-rails: Cria os arquivos de configuração necessários para que o Rspec funcione em harmonia com o projeto em Rails. Para ela funcionar ela tem como dependencia a gem Capybara.
+- capybara:
+- spring-commands-rspec: Gem cria o binario para o rspec dentro da pasta bin do projeto. Assim ganhamos mais velocidade ao rodar o comando bin/rspec assim como bin/rails.
