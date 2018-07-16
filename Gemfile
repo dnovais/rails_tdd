@@ -41,6 +41,12 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.6'
   # Capybara gem
   gem 'capybara'
+
+  # factory bot (factory girl)
+  gem 'factory_bot_rails', '~> 4.0'
+
+  # faker
+  gem 'faker'
 end
 
 group :development do
