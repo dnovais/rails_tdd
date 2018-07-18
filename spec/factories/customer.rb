@@ -8,8 +8,11 @@ FactoryBot.define do
 		end
 	
 		name { Faker::Name.name }
+		
 		email { Faker::Internet.email }
+
 		vip true
+		
 		days_to_pay 30
 
 		# Using traits and factories together
