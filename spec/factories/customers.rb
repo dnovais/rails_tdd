@@ -4,12 +4,15 @@ FactoryBot.define do
 
 		# Transient attributes, or transitory or temporary, attribute invisible to attributes_for.
 		transient do
-			upcased false 
+			upcased false
+			qtd_orders 3
 		end
 	
 		name { Faker::Name.name }
 		
 		email { Faker::Internet.email }
+
+		address { Faker::Address.street_address }
 
 		vip true
 		
@@ -33,6 +36,15 @@ FactoryBot.define do
 			vip false
 			days_to_pay 15
 		end
+
+		trait :with_orders do
+			after(:create) do |customer, evaluator|
+				create_list(:order, evaluator.qtd_orders, customer: customer)
+			end
+		end
+
+		# We can create a factory to customer with orders too.
+		factory :customer_with_orders, traits: [:with_orders]
 
 		factory :customer_male, traits: [:male]
 		factory :customer_female, traits: [:female]

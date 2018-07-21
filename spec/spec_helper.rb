@@ -14,6 +14,13 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  
+  # Using the factory bot lint to test ours factories/models before.
+  # Read about this resource to know about the best pratices to use factorylint.
+  config.before(:suite) do
+    FactoryBot.lint
+  end
+  
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
