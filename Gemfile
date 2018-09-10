@@ -47,6 +47,15 @@ group :development, :test do
 
   # faker
   gem 'faker'
+
+  # Add webmock gem to simulate
+  gem 'webmock'
+
+  # Add httparty gem
+  gem 'httparty'
+
+  #Record your test suite's HTTP interactions and replay them during future test runs for fast, deterministic, accurate tests.
+  gem 'vcr'
 end
 
 group :development do
@@ -60,12 +69,6 @@ group :development do
   # This gem is necessary to generate the binary of rspec in folder bin from application. 
   # To get more speed with commands in rspec when we run bin/rspec rather rspec.
   gem 'spring-commands-rspec'
-
-  # Add httparty gem
-  gem 'httparty'
-
-  # Add webmock gem to simulate
-  gem 'webmock'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
